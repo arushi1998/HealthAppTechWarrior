@@ -71,7 +71,6 @@ public class details extends AppCompatActivity {
 
         if(age!=""){
 
-            ll.setVisibility(View.INVISIBLE);
             Toast.makeText(this, "PREVIOUS DATA IS ALREADY STORED", Toast.LENGTH_LONG).show();
 
             new CountDownTimer(5000, 1000) {
