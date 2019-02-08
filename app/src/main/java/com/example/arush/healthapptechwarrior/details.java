@@ -17,6 +17,8 @@ public class details extends AppCompatActivity {
         editor.putString("HEIGHT",height.getText().toString());
         editor.putString("WEIGHT",weight.getText().toString());
         editor.apply();
+        Intent intent = new Intent(this,two_buttons.class);
+        startActivity(intent);
     }
 
     @Override
@@ -28,10 +30,10 @@ public class details extends AppCompatActivity {
         weight=findViewById(R.id.weightEditText);
         sharedPreferences=getSharedPreferences("DETAILS",MODE_PRIVATE);
         String age=sharedPreferences.getString("AGE","");
-//        if(age!=""){
-//            Intent intent = new Intent(this,.class);
-//            startActivity(intent);
-//        }
+        if(age!=""){
+            Intent intent = new Intent(this,two_buttons.class);
+            startActivity(intent);
+        }
 
 
 
