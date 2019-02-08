@@ -10,10 +10,12 @@ public class two_buttons extends AppCompatActivity {
 
     public void calcBMI (View view) {
         Intent intent1 = new Intent(this, bmi.class);
+        startActivity(intent1);
     }
 
     public void calcSteps (View view) {
         Intent intent2 = new Intent(this, steps.class);
+        startActivity(intent2);
     }
 
     @Override
