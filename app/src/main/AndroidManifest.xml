@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".details" />
-        <activity android:name=".steps"></activity>
+        <activity android:name=".steps" />
+        <activity android:name=".bmi" />
+        <activity android:name=".two_buttons"></activity>
     </application>
 
 </manifest>
