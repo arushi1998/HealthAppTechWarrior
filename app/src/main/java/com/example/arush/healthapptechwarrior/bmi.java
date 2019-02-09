@@ -13,8 +13,10 @@ public class bmi extends AppCompatActivity {
         setContentView(R.layout.activity_bmi);
 
         TextView bmiTextView = findViewById(R.id.bmiTextView);
-//        int heightRecieved = details..;
-//        int weightRecieved = details..;
+          int  height = Integer.parseInt(details.height.getText().toString());
+        int  weight = Integer.parseInt(details.weight.getText().toString());
+        int bmiValue = (int) (0.025*0.025*height*height/weight);
+        bmiTextView.setText("Your BMI is:\n" + Integer.toString(bmiValue));
 
     }
 }
