@@ -1,159 +1,66 @@
 package com.example.arush.healthapptechwarrior;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class steps extends AppCompatActivity implements SensorEventListener {
+public class Steps extends AppCompatActivity implements SensorEventListener, StepListener {
+    private TextView TvSteps;
+    private Button BtnStart,BtnStop;
+    private StepDetector simpleStepDetector;
+    private SensorManager sensorManager;
+    private Sensor accel;
+    private static final String TEXT_NUM_STEPS = "Number of Steps: ";
+    private int numSteps;
 
-    SensorManager sensorManager;
-    TextView tv_steps;
-    boolean running = false;
+    public void start(View view){
+        numSteps = 0;
+        sensorManager.registerListener(Steps.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
+    }
+    public void stop(View view){
+        sensorManager.unregisterListener(Steps.this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_steps);
 
-        tv_steps = findViewById(R.id.tv_steps);
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        running = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (countSensor != null) {
-            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
-        } else {
-            Toast.makeText(this, "Sensor not found..!!", Toast.LENGTH_LONG).show();
-        }
-    }
+        // Get an instance of the SensorManager
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        simpleStepDetector = new StepDetector();
+        simpleStepDetector.registerListener(this);
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        running = false;
-        //if you unregister the hardware will stop detecting steps
-        //sensorManager.unregisterListener(this);
-    }
+        TvSteps =  findViewById(R.id.tv_steps);
+        BtnStart = findViewById(R.id.btn_start);
+        BtnStop =  findViewById(R.id.btn_stop);
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (running) {
-            tv_steps.setText(String.valueOf(event.values[0]));
-        }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            simpleStepDetector.updateAccel(
+                    event.timestamp, event.values[0], event.values[1], event.values[2]);
+        }
+    }
+
+    @Override
+    public void step(long timeNs) {
+        numSteps++;
+        TvSteps.setText(TEXT_NUM_STEPS + numSteps);
+    }
 
 }
