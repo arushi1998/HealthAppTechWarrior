@@ -15,9 +15,9 @@ import android.widget.Toast;
 public class details extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-    EditText age,height,weight;
+    public static EditText age,height,weight;
     RadioGroup group;
-    String g="",lifestyle;
+    public static String g="",lifestyle;
     public void maleButton(View view){
         g="m";
     }
@@ -71,7 +71,7 @@ public class details extends AppCompatActivity {
 
         if(age!=""){
 
-            Toast.makeText(this, "PREVIOUS DATA IS ALREADY STORED", Toast.LENGTH_LONG).show();
+         //   Toast.makeText(this, "PREVIOUS DATA IS ALREADY STORED", Toast.LENGTH_LONG).show();
 
             new CountDownTimer(5000, 1000) {
                 @Override
@@ -80,8 +80,8 @@ public class details extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    Intent intent = new Intent(getBaseContext(),two_buttons.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(getBaseContext(),two_buttons.class);
+//                    startActivity(intent);
                 }
             }.start();
 

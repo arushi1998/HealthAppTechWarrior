@@ -13,10 +13,28 @@ public class bmi extends AppCompatActivity {
         setContentView(R.layout.activity_bmi);
 
         TextView bmiTextView = findViewById(R.id.bmiTextView);
-          int  height = Integer.parseInt(details.height.getText().toString());
-        int  weight = Integer.parseInt(details.weight.getText().toString());
-        int bmiValue = (int) (0.025*0.025*height*height/weight);
-        bmiTextView.setText("Your BMI is:\n" + Integer.toString(bmiValue));
+          double  h = Integer.parseInt(details.height.getText().toString());
+        double  w = Integer.parseInt(details.weight.getText().toString());
+        double temp= w/(h*h);
+        double bmiValue =  (temp/(0.025*0.025));
+
+        TextView rec = findViewById(R.id.rec);
+        //int bmi = (int)bmiValue;
+
+        bmiTextView.setText("Your BMI is:\n" + Double.toString(bmiValue));
+
+        if (bmiValue<18.5){
+            rec.setText("Under Weight\n You should eat more of Oats, Bananas,Oranges.");
+        }
+        else if (bmiValue>18.5&&bmiValue<24.9){
+            rec.setText("Normal Weight\n You have perfect BMI");
+        }
+        else if (bmiValue>25&&bmiValue<29.9){
+            rec.setText("Over Weight\n You should exercise and eat more of nuts, seeds, cauliflower.");
+        }
+        else if (bmiValue>30){
+            rec.setText("Obesity\n You are at high risk \n You should exercise and eat green vegetables");
+        }
 
     }
 }

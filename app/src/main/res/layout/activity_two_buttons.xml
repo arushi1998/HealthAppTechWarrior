@@ -12,11 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="228dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,12 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="360dp"
         android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        android:padding="40dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -37,7 +37,7 @@
             android:id="@+id/bmiButton"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:onClick="calcBMI"
             android:padding="15dp"
             android:text="Calculate BMI"
@@ -53,6 +53,16 @@
             android:text="Step Counter"
             android:textAlignment="center"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/calorieButton"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:onClick="calorie"
+            android:text="Calorie Calculator"
+            android:textAlignment="center"
+            android:textColor="@color/abc_input_method_navigation_guard"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <EditText
@@ -60,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="136dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="number"
@@ -73,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="23dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="8dp"
         android:text="Enter the number of Hours slept last night"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
@@ -85,9 +95,9 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="196dp"
         android:layout_marginEnd="8dp"
         android:text="Enter target weight to be reduced "
         android:textColor="@color/common_google_signin_btn_text_dark_default"
@@ -101,24 +111,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="DASHBOARD"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/enterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="296dp"
         android:layout_marginEnd="8dp"
+        android:onClick="valuePassed"
         android:text="ENTER"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
